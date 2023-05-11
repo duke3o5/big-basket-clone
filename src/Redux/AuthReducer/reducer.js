@@ -1,5 +1,12 @@
 
 import { types } from "./actionType";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+  removeLocalStorageItem,
+} from "../Utilites/localStorage";
+import { LOGOUT_SUCCESS } from "./actionTypes";
+
 
 const initialState = {
   isLoading: false,
@@ -15,6 +22,7 @@ export const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userData: { ...payload },
+        isAuth: true,
       };
     }
     case types.LOGIN_GET_USER_DATA: {
@@ -71,8 +79,18 @@ export const reducer = (state = initialState, { type, payload }) => {
         isError: true,
       };
     }
+
+    case types.LOGOUT_SUCCESS:{
+      return {...state, isAuth: payload}
+    }
+
     default:
       return state;
   }
 };
+// const userData = getLocalStorageItem("userData");
+// // if (userData) {
+// //   initialState.userData = userData;
+// //   initialState.isAuth = true;
+// // }
 

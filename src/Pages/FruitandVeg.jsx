@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import { SideBar } from '../components/SideBar'
 import { ProductList } from '../components/ProductList'
 import { useSelector } from 'react-redux'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom';
+import Nav from '../components/adminComponents/Navbar';
 import { Box, Button, Center, Container } from '@chakra-ui/react'
 
 export const FruitandVeg = () => {
@@ -30,7 +31,7 @@ export const FruitandVeg = () => {
     </h1>:
     <Box w={['95%','95%','95%','95%','90%','77%']}m={'auto'}>
       <P>{'HOME> FRUITS & VEGETABLES'}</P>
-      <FruitsVegesSlider/>
+      {/* <FruitsVegesSlider/> */}
       <DIV>
           <SideBar category={category} setCategory={setCategory} price={price} setPrice={setPrice}/>
           <ProductList order={order} setOrder={setOrder} p={p} category={category} setCategory={setCategory} price={price} setPrice={setPrice}/>

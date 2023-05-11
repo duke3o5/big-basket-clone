@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import "../Styling/User/cart.css"
 import axios from 'axios';
 import cart from '../assets/cart.png'
+import Nav from '../components/adminComponents/Navbar';
+
+
 
 const Cart = () => {
     const [cart,Cart]=useState([]);
@@ -134,7 +137,7 @@ const Cart = () => {
                         <h4>Total Amount</h4>
                         <h4>₹ <span id="tamnt">{total-cpn}</span></h4>
                     </div>
-                    <button onClick={()=>navigate('/products')}>PLACE ORDER</button>
+                    <button onClick={()=>navigate('/address')}>PLACE ORDER</button>
                 </div>
             </div>
         </div>

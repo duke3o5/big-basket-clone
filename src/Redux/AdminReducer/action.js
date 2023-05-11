@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ADMIN_DELETE_ITEM, ADMIN_STATS, ADMIN_STATS_DAIRY, ADMIN_STATS_FOOD, ADMIN_STATS_PRODUCTS, GET_ADMIN_DATA_ERROR, GET_ADMIN_DATA_REQUEST, GET_ADMIN_DATA_SUCCESS, POST_REQUEST_ERROR, POST_REQUEST_SUCCESS } from './actionTypes';
-const url='https://smiling-houndstooth-boa.cyclic.app';
+const url='https://big-basket-api.onrender.com';
 
 export const postAdminData=(data)=>(dispatch)=>{
     dispatch({type:POST_REQUEST_SUCCESS})
