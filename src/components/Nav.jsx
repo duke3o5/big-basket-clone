@@ -17,11 +17,9 @@ const Navbar = () => {
     // const {Search}=useContext(Context);
 
     function func(e){
-      
-        // if(e.keyCode===13){
-        //     Search(e.target.value)
-        // }
-      
+        if(e.keyCode===13){
+            Search(e.target.value)
+        }
     }
 
   return (

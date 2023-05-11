@@ -9,22 +9,23 @@ import { useSearchParams } from 'react-router-dom';
 import Nav from '../components/adminComponents/Navbar';
 import { Box, Button, Center, Container } from '@chakra-ui/react'
 
-export const FruitandVeg = () => {
+export const Search = ({search}) => {
   const [searchParams,setSearchParams]=useSearchParams();
   const {isError}=useSelector(state=>state.productReducer);
   const [category,setCategory]=useState(searchParams.getAll('category')||[]);
   const [order,setOrder]=useState(searchParams.get('order')||'');
   const [price,setPrice]=useState(searchParams.getAll('price')||[]);
-  const [p,setP]=useState(12)
+  const [p,setP]=useState(12);
 
   useEffect(()=>{
     let obj={
       category,price,p
     };
-    order && (obj.order=order)
+    order && (obj.order=order);
+    search && (obj.search=search);
     console.log(obj)
     setSearchParams(obj)
-  },[category,order,p,price])
+  },[category,order,p,price,search])
 
   return (
     isError?<h1 style={{fontSize:'50px',width:'fit-content' ,margin:'50px auto'}}>

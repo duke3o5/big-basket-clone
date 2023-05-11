@@ -10,14 +10,16 @@ import { AdminAddDataForm } from "./adminComponents/AdminAddDataForm";
 import { AdminStats } from "./adminComponents/AdminStats";
 import { AdminEditProduct } from "./adminComponents/AdminEditProduct";
 import { Login } from "../Pages/Login";
+import { Search } from "../Pages/Search";
 // import SignUp from "../Pages/SignUp";
 
-const MainRoutes = () => {
+const MainRoutes = ({search}) => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/products" element={<FruitandVeg />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/search" element={<Search search={search} />} />
       <Route path="/products/:id" element={<SingleProductPage />} />
       <Route path="*" element={<h3>Page Not Found !</h3>} />
       <Route path="/productForm" element={<AdminAddDataForm />} />
