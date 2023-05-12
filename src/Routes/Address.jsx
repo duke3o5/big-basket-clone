@@ -6,6 +6,7 @@ import {
   Text,
   Input,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 // import  Topnavbar from "./Navbar/Topnavbar";
@@ -21,6 +22,7 @@ const Address = () => {
   const [area, setArea] = useState("");
   const [pin, setPin] = useState("");
   const navigate = useNavigate();
+  const toast = useToast();
   const handleSubmit = () => {
     if (
       name === "" ||
@@ -36,7 +38,17 @@ const Address = () => {
     ) {
       alert("Enter all field");
     } else {
-      navigate("/payment");
+      if(!isNaN(+number) && !isNaN(+pin)){
+        navigate("/payment");
+      } else{
+        toast({
+          title: "Please Enter correct inputs",
+          status: "error",
+          duration: 7000,
+          isClosable: true,
+          position:"top"
+        });
+      }
     }
   };
   return (
@@ -109,6 +121,8 @@ const Address = () => {
                 placeholder=""
                 required
                 value={number}
+                maxLength={10}
+                minLength={10}
                 onChange={(e) => setNumber(e.target.value)}
               />
             </Box>
