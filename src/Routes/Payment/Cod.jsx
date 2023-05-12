@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Flex, Heading, Button, useToast, Spinner } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-export let price = 0;
-export let cartCount = 0;
+// import { price } from "../Payment";
+// import {cartCount} from "../Payment";
+let price = 0;
+let cartCount = 0;
 
 const Cod = () => {
   const [cart, Cart] = useState([]);
@@ -20,7 +21,7 @@ const Cod = () => {
 
       setTimeout(() => {
         setLoading(false);
-        
+
         toast({
           description: "Payment Successfully",
           status: "success",

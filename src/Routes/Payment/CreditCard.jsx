@@ -52,20 +52,39 @@ const CreditCard = ({totalCartPrice}) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
 
   const handleBtn = () => {
     if (cardNumber.length !== 16) {
-      alert("card number should be 16 digits without any spaces");
+      toast({
+        description: "card number should be 16 digits without any spaces",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
       return;
     }
     if (!expiry.includes("/")) {
-      alert("Expiry should be a valid number");
+      toast({
+        description: "Expiry should be a valid number",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
       return;
     }
     // totalCartPrice
 
     if (cvv.length !== 3 && typeof Number(cvv) !== Number) {
-      alert("invalid cvv number");
+      toast({
+        description: "Invalid CVV number",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
       return;
     }
     setLoading(true);

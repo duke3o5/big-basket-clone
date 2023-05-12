@@ -9,9 +9,10 @@ import {
   AccordionIcon,
   AccordionPanel,
   Image,
+  useToast
 } from "@chakra-ui/react";
-
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
 
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { BsArrowRightCircle, BsCashCoin, BsGift } from "react-icons/bs";
@@ -21,17 +22,67 @@ import Paytm from "./Payment/Paytm";
 import CreditCard from "./Payment/CreditCard";
 import GiftCard from "./Payment/GiftCard";
 import Cod from "./Payment/Cod";
-import { price } from "./Payment/Cod";
-import {cartCount} from "./Payment/Cod";
+// import { price } from "./Payment/Cod";
+// import {cartCount} from "./Payment/Cod";
+import axios from "axios";
 
+
+export let price = 0;
+export let cartCount = 0;
 function PaymentPage() {
   const [Price, setPrice] =useState(price);
+  const [cart, Cart] = useState([]);
+  const [total, Total] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const navigate = useNavigate();
+
+
   // console.log(cartCount);
   // const ItemCount = 3;
   // const price=249;
   const deliveryAddress = "";
 
   const [method, setMethod] = useState("Card");
+
+  const HandleClick = () => {
+    if (total > 0) {
+      setLoading(true);
+
+      setTimeout(() => {
+        setLoading(false);
+        
+        toast({
+          description: "Payment Successfully",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+        navigate("/");
+      }, 2500);
+    }
+  };
+
+  function getCart() {
+    axios
+      .get("https://big-basket-api.onrender.com/Cart")
+      .then((res) => Cart(res.data));
+  }
+
+  // console.log(cart);
+  useEffect(() => {
+    getCart();
+  }, [cart]);
+
+  useEffect(() => {
+    let sum = 0;
+    cart.forEach((el) => (sum += el.Price * el.qty));
+    Total(sum);
+    price = total;
+    // console.log(price);
+    cartCount = cart.length;
+  }, [cart]);
 
   return (
     <Flex
@@ -353,7 +404,7 @@ function PaymentPage() {
                   as="h1"
                   fontSize="16px"
                 >
-                  <span>You Pay</span> <span>₹{price.toFixed(1)}</span>{" "}
+                  <span>You Pay</span> <span>₹{total.toFixed(1)}</span>{" "}
                 </Heading>
               </AccordionPanel>
             </AccordionItem>
