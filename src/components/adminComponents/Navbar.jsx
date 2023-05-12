@@ -6,11 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../../Styling/User/nav.css";
 import logo from "../../Images/main_logo.jpg";
-import cart from "../../Images/shopping-cart.png";
+import Cart from "../../Images/shopping-cart.png";
 import {
   Popover,
   PopoverBody,
   PopoverCloseButton,
+  PopoverFooter,
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
@@ -25,11 +26,12 @@ import {
   DrawerHeader,
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { useToast } from "@chakra-ui/react";
+import { Center, HStack, Heading, Img, useToast } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/input";
 import { Logout } from "../../Redux/AuthReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { getCart } from "../../Redux/ProductReducer/action";
 
 const Nav = ({ setSearch }) => {
   const [open, close] = useState(false);
@@ -38,8 +40,10 @@ const Nav = ({ setSearch }) => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [cartLength, setCartlength] = useState(0);
+  // const [cartLength, setCartlength] = useState(0);
   const toast = useToast();
+  const { cart } = useSelector((state) => state.productReducer);
+  console.log(cart);
 
   function func(e) {
     if (e.keyCode === 13) {
@@ -48,14 +52,14 @@ const Nav = ({ setSearch }) => {
     }
   }
 
-  function getCart() {
-    axios.get("https://big-basket-api.onrender.com/Cart")
-      .then((res) => setCartlength(res.data.length));
-  }
+  // function getCart() {
+  //   axios.get("https://big-basket-api.onrender.com/Cart")
+  //     .then((res) => setCartlength(res.data.length));
+  // }
 
   useEffect(() => {
-    getCart();
-  }, []);
+    dispatch(getCart);
+  }, [cart]);
 
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
 
@@ -217,33 +221,100 @@ const Nav = ({ setSearch }) => {
                   </PopoverContent>
                 </Popover>
                 <li className="nav__item">
-                 <div style={{display:"flex"}}>
-                 <Link to="/cart">
-                    {open ? "Cart" : <img width="35px" src={cart} />}
-                  </Link>
-                  <p style={{marginLeft:"-12px", marginTop:"9px"}}>{isAuth && cartLength}</p>
-                 </div>
-                </li>
-                <li className="nav__item">
-                  {" "}
-                  {isAuth ? (
-                    <Button onClick={handleLogout}>Logout</Button>
-                  ) : (
-                    <Link to={isAuth ? "/" : "/login"}>
-                      {open ? (
-                        "Sign In / Sign Up"
-                      ) : (
-                        <img width="30px" src={login} />
-                      )}
+                  <div style={{ display: "flex" }}>
+                    <Link to="/cart" style={{ marginRight: "-25px" }}>
+                      {open ? "Cart" : <img width="35px" src={Cart} />}
                     </Link>
-                  )}
+                    {isAuth && (
+                      <h1
+                        style={{
+                          marginRight: "30px",
+                          marginTop: "4px",
+                          fontWeight: "1000",
+                          color: "red",
+                          padding: "1px 6px",
+                          height: "fit-content",
+                          borderRadius: "50%",
+                          backgroundColor: "#84c225",
+                        }}
+                      >
+                        {cart.length}
+                      </h1>
+                    )}
+                  </div>
                 </li>
+                <Popover trigger="hover">
+                  <PopoverTrigger>
+                    <li className="nav__item">
+                      {" "}
+                      <Link>
+                        {open ? (
+                          "Sign In / Sign Up"
+                        ) : (
+                          isAuth?<img style={{borderRadius:'50%',height:'50px',width:'50px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/678px-Elon_Musk_Royal_Society_%28crop2%29.jpg" alt="" />:<img  width="30px" src={login} />
+                          
+                        )}
+                      </Link>
+                    </li>
+                  </PopoverTrigger>
+
+                  <PopoverContent>
+                    <PopoverHeader fontWeight="semibold">
+                      <Center fontSize={20}>{isAuth?'Welcome Elon Musk !':'Create Account'}</Center>
+                    </PopoverHeader>
+                    <PopoverBody>
+                      <Center>
+                      <p >{isAuth?'Access account & manage your orders':'Login or Sign Up to get the full access'}</p>
+                      
+                      </Center>
+                    </PopoverBody>
+                    <PopoverFooter display="flex" justifyContent="center">
+                       {isAuth ? (
+                          <div>
+      
+                            <Button color={"white"}
+                              bg={"#84c225"} onClick={handleLogout}>Logout</Button>
+                          </div>
+                        ) : (
+                          <div style={{display:'flex',justifyContent:'space-between',width:'100%'}}>
+                            <Button
+                              onClick={() => navigate("/signup")}
+                              color={"white"}
+                              bg={"#84c225"}
+                            >
+                              Sign Up
+                            </Button>
+                            <Button
+                              onClick={() => navigate("/login")}
+                              color={"white"}
+                              bg={"#84c225"}
+                            >
+                              Sign In
+                            </Button>
+                          </div>
+                        )}
+                    </PopoverFooter>
+                  </PopoverContent>
+                </Popover>
               </ul>
             </nav>
           </div>
         </div>
       </header>
     </>
+
+    // {isAuth ? (
+    //   <Button onClick={handleLogout}>Logout</Button>
+    // ) : (
+    //   <Link to={isAuth ? "/" : "/login"}>
+    //     {open ? (
+    //       "Sign In / Sign Up"
+    //     ) : (
+    //       <img width="30px" src={login} />
+    //     )}
+    //   </Link>
+    // )}
+
     // <DIV>
     //     <div>
     //         <img src={logo}/>

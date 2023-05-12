@@ -116,8 +116,8 @@ export const ProductList = ({
 
   return (
     <DIV>
-      <box>
-        <p>
+      <box id="up">
+        <p >
           Fruits & Vegetables{" "}
           {isLoading ? <Spinner size="xs" /> : "(" + products.length + ")"}
         </p>
@@ -269,7 +269,7 @@ export const ProductList = ({
                   </label>
                 </div>
 
-                <div className="bar">
+                {/* <div className="bar">
                   <p>Seasonal</p>
                   <hr />
                   <label className="container">
@@ -362,7 +362,7 @@ export const ProductList = ({
                     <input type="checkbox" />
                     <span className="checkmark"></span>
                   </label>
-                </div>
+                </div> */}
               </BOX>
             </DrawerBody>
           </DrawerContent>

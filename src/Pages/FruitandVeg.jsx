@@ -38,7 +38,7 @@ export const FruitandVeg = () => {
           <ProductList order={order} setOrder={setOrder} p={p} category={category} setCategory={setCategory} price={price} setPrice={setPrice}/>
       </DIV>
       <Center><Button my={3} backgroundColor='#84c225' color='white' padding="2px 15px" borderRadius='8px' fontSize='20px' onClick={()=>setP(pre=>pre+8)}>View More</Button></Center>
-      <a id='upper' href="#sliderF">
+      <a id='upper' href="#up">
         <Button backgroundColor='#84c225' color='white'height='40px'width='40px'fontSize='20px'position= 'fixed'top='90vh'left={['89.5vw','95vw','95vw','92vw','96vw','92vw']}>&#11165;</Button>
       </a>
     </Box>

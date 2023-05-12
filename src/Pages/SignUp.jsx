@@ -13,9 +13,10 @@ import {
   Center,
   Input,
   Stack,
+  Link,
   useToast,
 } from "@chakra-ui/react";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 let initialValue = {
@@ -144,7 +145,11 @@ const SignUp = () => {
             {isLoading ? "Signing up..." : "Sign Up"}
           </Button>
           <Center>
-          <Link to="/login" color={"#84c225"}>Login</Link>
+          <Link color={'#84c225'}
+            textDecoration={'none'}
+            href="/login"
+            textAlign="center"
+            cursor={'pointer'}>Login</Link>
           </Center>
         </Stack>
       </form>
