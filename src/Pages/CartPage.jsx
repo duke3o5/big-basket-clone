@@ -98,7 +98,7 @@ const Cart = () => {
                         <p>Weight :<span> {el.Weight} / pack</span></p>
                         <div id="qnty">
                             <p>Qty :</p>
-                            <div id="minus" onClick={()=>qtyFn(el,-1)}>-</div>
+                            <button id="minus" disabled={el.qty===1} onClick={()=>qtyFn(el,-1)}>-</button>
                             <span id="quantity"> {el.qty} </span>
                             <div id="plus" onClick={()=>qtyFn(el,1)}>+</div>
                         </div>
