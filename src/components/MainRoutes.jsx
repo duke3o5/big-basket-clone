@@ -11,14 +11,19 @@ import { AdminStats } from "./adminComponents/AdminStats";
 import { AdminEditProduct } from "./adminComponents/AdminEditProduct";
 import { Login } from "../Pages/Login";
 import { Search } from "../Pages/Search";
-// import SignUp from "../Pages/SignUp";
+import SignUp from "../Pages/SignUp.jsx";
+import { PrivateRoutes } from "./PrivateRoute";
 
 const MainRoutes = ({search}) => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/products" element={<FruitandVeg />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route path="/cart" element={
+        <PrivateRoutes>
+          <Cart />
+        </PrivateRoutes>
+      } />
       <Route path="/search" element={<Search search={search} />} />
       <Route path="/products/:id" element={<SingleProductPage />} />
       <Route path="*" element={<h3>Page Not Found !</h3>} />
@@ -28,7 +33,7 @@ const MainRoutes = ({search}) => {
       <Route path="/edit/:id" element={<AdminEditProduct />} />
       <Route path="/address" element={<Address />} />
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/signup" element={<SignUp />} /> */}
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/payment" element={<PaymentPage />} />
     </Routes>
   );

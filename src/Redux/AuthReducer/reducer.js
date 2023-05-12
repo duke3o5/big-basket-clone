@@ -5,7 +5,6 @@ import {
   setLocalStorageItem,
   removeLocalStorageItem,
 } from "../Utilites/localStorage";
-import { LOGOUT_SUCCESS } from "./actionTypes";
 
 
 const initialState = {
@@ -81,7 +80,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     }
 
     case types.LOGOUT_SUCCESS:{
-      return {...state, isAuth: payload}
+      return {...state, isAuth: false}
     }
 
     default:
