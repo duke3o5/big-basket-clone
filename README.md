@@ -16,8 +16,7 @@ BigBasket is India's biggest e-grocer. It offers tens of thousands of different 
 # Contributors:<br/>
 1. Deepak Kumar (Admin Panel, Address Page, Checkout Page)<br/>
 2. Anubhav Dixit (Navbar, Search Page, Products Page, Single Product Page, Cart Page)<br/>
-3. Dibyendu (Home Page)<br/>
-4. Ganesh Behra (Login)<br/>
+3. Dibyendu (Home Page)
 <br/><br/>
 ## Frontend:
 https://apnabasket.vercel.app
