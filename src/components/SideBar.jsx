@@ -156,7 +156,7 @@ export const SideBar = ({ category, setCategory, price, setPrice }) => {
         </label>
       </div>
 
-      <div className="bar" id="seasonal">
+      {/* <div className="bar" id="seasonal">
         <p>Seasonal</p>
         <hr />
         <label className="container">
@@ -249,7 +249,7 @@ export const SideBar = ({ category, setCategory, price, setPrice }) => {
           <input type="checkbox" checked={false} />
           <span className="checkmark"></span>
         </label>
-      </div>
+      </div> */}
     </DIV>
   );
 };

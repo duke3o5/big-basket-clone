@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
+import { CART_LENGTH, GET_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./actionTypes"
 
 export const getProduct = (obj) => (dispatch) => {
     // console.log(credentials)
@@ -12,5 +12,19 @@ export const getProduct = (obj) => (dispatch) => {
         }).catch(() => {
             console.log('failed')
             dispatch({ type: PRODUCT_FAILURE })
-        })
+    })
+}
+
+export const getCart = (dispatch) => {
+    console.log('credentials')
+
+    axios.get("https://big-basket-api.onrender.com/Cart")
+      
+        .then((res) => {
+            // console.log(res);
+            dispatch({ type: CART_LENGTH, payload: res.data })
+        }).catch(() => {
+            console.log('failed')
+            dispatch({ type: PRODUCT_FAILURE })
+    })
 }
