@@ -62,7 +62,7 @@ export const Login = () => {
               duration: 1000,
               isClosable: true,
             });
-            navigate(location.state, { replace: true });
+            navigate(location.state || "/", { replace: true });
           } else {
             toast({
               position: "top",
