@@ -10,10 +10,13 @@ import {
   FormErrorMessage,
   FormLabel,
   Heading,
+  Center,
   Input,
   Stack,
   useToast,
 } from "@chakra-ui/react";
+import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 let initialValue = {
   name: "",
@@ -26,7 +29,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const { isLoading, isError } = useSelector((state) => state);
   const toast = useToast();
-
+  const navigate=useNavigate();
   const [formValues, setFormValues] = useState(initialValue);
 
   const handleChange = (e) => {
@@ -60,9 +63,10 @@ const SignUp = () => {
         position: "top",
         title: "Sign up successful!",
         status: "success",
-        duration: 3000,
+        duration: 1000,
         isClosable: true,
       });
+      navigate('/login');
     } catch (err) {
       console.log(err);
       toast({
@@ -139,6 +143,9 @@ const SignUp = () => {
           >
             {isLoading ? "Signing up..." : "Sign Up"}
           </Button>
+          <Center>
+          <Link to="/login" color={"#84c225"}>Login</Link>
+          </Center>
         </Stack>
       </form>
     </Box>

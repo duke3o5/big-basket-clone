@@ -16,7 +16,7 @@ export const SingleProductPage = () => {
   function addCart(){
     if(isAuth){
       let obj={...data,qty:1}
-      axios.post('https://smiling-houndstooth-boa.cyclic.app/Cart',obj)
+      axios.post('https://big-basket-api.onrender.com/Cart',obj)
       .then(()=>toast({
         position:'top',
         title: data.name,

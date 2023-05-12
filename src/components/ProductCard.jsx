@@ -14,7 +14,7 @@ export const ProductCard = ({id,rating,name,Image,category,Price,Weight}) => {
   function addCart(){
     if(isAuth){
       let obj={rating,name,Image,category,Price,Weight,qty:1}
-      axios.post('https://smiling-houndstooth-boa.cyclic.app/Cart',obj)
+      axios.post('https://big-basket-api.onrender.com/Cart',obj)
       .then(()=>toast({
         position:'top',
         title: name,

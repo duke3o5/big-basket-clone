@@ -43,7 +43,7 @@ export const Login = () => {
     setFormValues(initialValue);
     try {
       let users = axios
-        .get("https://smiling-houndstooth-boa.cyclic.app/Users")
+        .get("https://big-basket-api.onrender.com/Users")
         .then((response) => {
           console.log(response);
           let login = response.data.find((item) => {
@@ -62,7 +62,7 @@ export const Login = () => {
               duration: 1000,
               isClosable: true,
             });
-            navigate("/");
+            navigate(location.state, { replace: true });
           } else {
             toast({
               position: "top",
