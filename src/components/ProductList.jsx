@@ -115,7 +115,6 @@ export const ProductList = ({
   }
 
   return (
-    !isLoading&&products.length?
     <DIV>
       <box>
         <p>
@@ -406,7 +405,7 @@ export const ProductList = ({
           products.map((el) => <ProductCard key={el.id} {...el} />)
         )}
       </Grid>
-    </DIV>:<Text fontSize={70} m={'200px auto'}>{'No result found !'}</Text>
+    </DIV>
   );
 };
 

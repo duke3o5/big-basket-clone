@@ -37,7 +37,7 @@ export const SingleProductPage = () => {
   }
 
   useEffect(()=>{
-    axios.get(`https://big-basket-api.onrender.com/Products/${id}`)
+    axios.get(`https://smiling-houndstooth-boa.cyclic.app/Products/${id}`)
     .then(res=>{
        setData(res.data)
        console.log(res.data)
