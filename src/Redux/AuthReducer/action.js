@@ -5,7 +5,7 @@ import {
   setLocalStorageItem,
   removeLocalStorageItem,
 } from "../Utilites/localStorage";
-import { LOGOUT_SUCCESS } from "./actionTypes";
+// import { LOGOUT_SUCCESS } from "./actionTypes";
 
 export const setUserData = (data) => ({
   type: types.LOGIN_SET_USER_DATA,
@@ -111,5 +111,5 @@ export const RemoveUserDataAfter = () => async (dispatch) => {
 
 export const Logout=(dispatch)=>{
   // console.log('she')
-  dispatch({type:LOGOUT_SUCCESS, payload: false})
+  dispatch({type:types.LOGOUT_SUCCESS})
 }

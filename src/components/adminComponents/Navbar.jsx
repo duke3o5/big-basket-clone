@@ -25,32 +25,39 @@ import {
   DrawerHeader,
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
+import { useToast } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/input";
 import { Logout } from "../../Redux/AuthReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 
-const Nav = ({setSearch}) => {
+const Nav = ({ setSearch }) => {
   const [open, close] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   const [text, setText] = useState("");
-
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const toast = useToast();
 
   function func(e) {
     if (e.keyCode === 13) {
       setSearch(e.target.value);
-      navigate('/search')
+      navigate("/search");
     }
   }
 
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
-  console.log(isAuth);
 
   const handleLogout = () => {
     dispatch(Logout);
-    console.log("HE");
+    toast({
+      description: "Logout successful",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
+    console.log(isAuth);
   };
 
   return (
@@ -85,7 +92,12 @@ const Nav = ({setSearch}) => {
                 )}
               </button>
               <ul className={open ? "nav__wrapper active" : "nav__wrapper"}>
-                <p className="nav__item" ref={btnRef} onClick={onOpen} style={{cursor:'pointer'}}>
+                <p
+                  className="nav__item"
+                  ref={btnRef}
+                  onClick={onOpen}
+                  style={{ cursor: "pointer" }}
+                >
                   {open ? <a>Search</a> : <FiSearch />}
                 </p>
                 <Drawer
