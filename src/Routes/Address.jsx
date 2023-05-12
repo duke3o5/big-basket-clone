@@ -23,32 +23,133 @@ const Address = () => {
   const [pin, setPin] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
+
+  //navigate("/payment");
   const handleSubmit = () => {
     if (
-      name === "" ||
-      lname === "" ||
-      number === "" ||
-      aprtname === "" ||
-      house === "" ||
-      street === "" ||
-      landmark === "" ||
-      city === "" ||
-      area === "" ||
-      pin === ""
+      
+      !pin.length &&
+      !name &&
+      !lname &&
+      !house &&
+      !area &&
+      !city &&
+      !aprtname &&
+      !number.length
     ) {
-      alert("Enter all field");
-    } else {
-      if(!isNaN(+number) && !isNaN(+pin)){
-        navigate("/payment");
-      } else{
+      toast({
+        title: "Please fill all details",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+
+
+    else if (
+      isNaN(+pin) ||
+      pin.length !== 6 ||
+      !name ||
+      !lname ||
+      !house ||
+      !area ||
+      !city ||
+      !aprtname ||
+      number.length < 10 ||
+      isNaN(+number)
+    ) {
+      if (isNaN(+pin) || pin.length !== 6) {
         toast({
-          title: "Please Enter correct inputs",
+          title: "Please fill proper pin",
           status: "error",
-          duration: 7000,
+          duration: 1000,
           isClosable: true,
-          position:"top"
+          position: "top",
         });
       }
+      if (!name) {
+        toast({
+          title: "Please fill name properly",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+      if (!lname) {
+        toast({
+          title: "Please fill name properly",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+      if (number.length < 10 || isNaN(+number)) {
+        toast({
+          title: "Please fill 10 digit number",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+
+      if (!aprtname) {
+        toast({
+          title: "Please fill apartment details",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+
+      if (!house) {
+        toast({
+          title: "Please fill house number",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+
+      if (!street) {
+        toast({
+          title: "Please fill street details",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+
+      if (!city) {
+        toast({
+          title: "Please fill city details",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+
+      if (!area) {
+        toast({
+          title: "Please fill area details",
+          status: "error",
+          duration: 1000,
+          isClosable: true,
+          position: "top",
+        });
+      }
+    } 
+    
+    
+    else {
+      navigate("/payment");
     }
   };
   return (
@@ -203,7 +304,6 @@ const Address = () => {
                   Enter landmark for easy reach out
                 </FormLabel>
                 <Input
-                  required={"required"}
                   fontSize={"12px"}
                   width={"100%"}
                   id="first-name"
@@ -271,6 +371,8 @@ const Address = () => {
                   id="first-name"
                   placeholder=""
                   required
+                  maxLength={6}
+                  minLength={6}
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
                 />
@@ -289,3 +391,11 @@ const Address = () => {
 };
 
 export default Address;
+
+// toast({
+//   title: "Please Enter correct inputs",
+//   status: "error",
+//   duration: 7000,
+//   isClosable: true,
+//   position:"top"
+// });
