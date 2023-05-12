@@ -17,9 +17,8 @@
     #main>div:first-child>div{
         flex-direction: column;
         /* height: 500px; */
-    }
-
-    
+        
+    } 
 }
 
 #main{

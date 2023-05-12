@@ -75,7 +75,7 @@ export const Footer=()=> {
   const navigate= useNavigate();
   return (
     <Box
-      bg={useColorModeValue("#f6ffe9")}
+      bg={useColorModeValue("#ffffff")}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid

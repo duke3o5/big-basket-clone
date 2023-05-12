@@ -5,28 +5,39 @@ import { useParams } from 'react-router-dom';
 import van from '../assets/delivery-van.png'
 import styled from 'styled-components';
 import Nav from '../components/adminComponents/Navbar';
+import { useSelector } from 'react-redux';
 
 export const SingleProductPage = () => {
   const {id}=useParams(); 
   const [data,setData]=useState({}) 
   const toast=useToast()
-
+  const {isAuth}=useSelector(state=>state.AuthReducer);
 
   function addCart(){
-    let obj={...data,qty:1}
-    axios.post('https://big-basket-api.onrender.com/Cart',obj)
-    .then(()=>toast({
-      position:'top',
-      title: data.name,
-      description:'Added Successfully',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    }))
+    if(isAuth){
+      let obj={...data,qty:1}
+      axios.post('https://smiling-houndstooth-boa.cyclic.app/Cart',obj)
+      .then(()=>toast({
+        position:'top',
+        title: data.name,
+        description:'Added Successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      }))
+    }else{
+      toast({
+        position:'top',
+        title: 'Please Login !',
+        status: 'info',
+        duration: 3000,
+        isClosable: true,
+      })
+    }
   }
 
   useEffect(()=>{
-    axios.get(`https://big-basket-api.onrender.com/Products/${id}`)
+    axios.get(`https://smiling-houndstooth-boa.cyclic.app/Products/${id}`)
     .then(res=>{
        setData(res.data)
        console.log(res.data)

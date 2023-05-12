@@ -5,22 +5,33 @@ import styled from 'styled-components';
 import axios from 'axios';
 import {Box, useToast } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const ProductCard = ({id,rating,name,Image,category,Price,Weight}) => {
-  
+  const {isAuth}=useSelector(state=>state.AuthReducer);
   const toast=useToast();
 
   function addCart(){
-    let obj={rating,name,Image,category,Price,Weight,qty:1}
-    axios.post('https://big-basket-api.onrender.com/Cart',obj)
-    .then(()=>toast({
-      position:'top',
-      title: name,
-      description:'Added Successfully',
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    }))
+    if(isAuth){
+      let obj={rating,name,Image,category,Price,Weight,qty:1}
+      axios.post('https://smiling-houndstooth-boa.cyclic.app/Cart',obj)
+      .then(()=>toast({
+        position:'top',
+        title: name,
+        description:'Added Successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      }))
+    }else{
+      toast({
+        position:'top',
+        title: 'Please Login !',
+        status: 'info',
+        duration: 3000,
+        isClosable: true,
+      })
+    }
   }
 
   return (

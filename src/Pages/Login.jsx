@@ -43,7 +43,7 @@ export const Login = () => {
     setFormValues(initialValue);
     try {
       let users = axios
-        .get("https://big-basket-api.onrender.com/Users")
+        .get("https://smiling-houndstooth-boa.cyclic.app/Users")
         .then((response) => {
           console.log(response);
           let login = response.data.find((item) => {
@@ -59,7 +59,7 @@ export const Login = () => {
               title: "Welcome to ApnaBasket.",
               description: "Successfully Logged in...",
               status: "success",
-              duration: 4000,
+              duration: 1000,
               isClosable: true,
             });
             navigate("/");
