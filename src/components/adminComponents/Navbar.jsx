@@ -1,7 +1,7 @@
 import ham from "../../Images/hamburger.png";
 import Close from "../../Images/close.png";
 import login from "../../Images/user.png";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../../Styling/User/nav.css";
@@ -29,6 +29,7 @@ import { useToast } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/input";
 import { Logout } from "../../Redux/AuthReducer/action";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 const Nav = ({ setSearch }) => {
   const [open, close] = useState(false);
@@ -37,6 +38,7 @@ const Nav = ({ setSearch }) => {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [cartLength, setCartlength] = useState(0);
   const toast = useToast();
 
   function func(e) {
@@ -45,6 +47,15 @@ const Nav = ({ setSearch }) => {
       navigate("/search");
     }
   }
+
+  function getCart() {
+    axios.get("https://big-basket-api.onrender.com/Cart")
+      .then((res) => setCartlength(res.data.length));
+  }
+
+  useEffect(() => {
+    getCart();
+  }, []);
 
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
 
@@ -206,9 +217,12 @@ const Nav = ({ setSearch }) => {
                   </PopoverContent>
                 </Popover>
                 <li className="nav__item">
-                  <Link to="/cart">
+                 <div style={{display:"flex"}}>
+                 <Link to="/cart">
                     {open ? "Cart" : <img width="35px" src={cart} />}
                   </Link>
+                  <p style={{marginLeft:"-12px", marginTop:"9px"}}>{isAuth && cartLength}</p>
+                 </div>
                 </li>
                 <li className="nav__item">
                   {" "}
