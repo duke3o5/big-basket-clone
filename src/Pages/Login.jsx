@@ -80,7 +80,7 @@ export const Login = () => {
   };
 
   return (
-    <Box mx="auto" w={{ base: "80%", md: "50%" }}>
+    <Box mx="auto" w={{ base: "80%", md: "50%" }} my={"130px"}>
       <Heading as="h1" textAlign="center" my="8">
         Log In
       </Heading>

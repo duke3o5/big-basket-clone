@@ -222,8 +222,8 @@ const Nav = ({ setSearch }) => {
                 </Popover>
                 <li className="nav__item">
                   <div style={{ display: "flex" }}>
-                    <Link to="/cart" style={{ marginRight: "-25px" }}>
-                      {open ? "Cart" : <img width="35px" src={Cart} />}
+                    <Link to="/cart" style={{ marginLeft: open ?"16.5%":"0px",marginRight: open ?"-10px":"-25px" }}>
+                      {open ? <p >Cart</p> : <img width="35px" src={Cart} />}
                     </Link>
                     {isAuth && (
                       <h1
@@ -236,6 +236,7 @@ const Nav = ({ setSearch }) => {
                           height: "fit-content",
                           borderRadius: "50%",
                           backgroundColor: "#84c225",
+                          display:!open?'block':'none'
                         }}
                       >
                         {cart.length}

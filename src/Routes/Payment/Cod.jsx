@@ -25,7 +25,7 @@ const Cod = () => {
         toast({
           description: "Payment Successfully",
           status: "success",
-          duration: 5000,
+          duration: 1000,
           isClosable: true,
           position: "top",
         });
@@ -58,7 +58,8 @@ const Cod = () => {
     return (
       <Spinner
         marginTop={"90px"}
-        marginRight={"30px"}
+        marginRight={"180px"}
+        marginLeft={"180px"}
         size={"xl"}
         color="green"
       />

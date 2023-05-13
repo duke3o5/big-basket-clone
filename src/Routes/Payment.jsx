@@ -86,6 +86,7 @@ function PaymentPage() {
 
   return (
     <Flex
+      
       direction={{
         base: "column",
         sm: "column",
@@ -102,18 +103,17 @@ function PaymentPage() {
         xl: 0,
         "2xl": 0,
       }}
-      border="px solid black"
       width="90%"
       margin="auto"
       justifyContent="space-around"
       marginTop="20px"
-      marginBottom="20px"
+      marginBottom="150px"
       padding="10px"
     >
       <Flex
         direction="column"
         gap="10"
-        border="px solid red"
+        // border="1px solid red"
         width={{
           base: "90%",
           sm: "90%",
@@ -132,15 +132,15 @@ function PaymentPage() {
           >
             Choose payment method
           </Heading>
-          <Text fontSize="14px" fontFamily="Inter,sans-serif">
+          {/* <Text fontSize="14px" fontFamily="Inter,sans-serif">
             Choose the Payment method you prefer
-          </Text>
+          </Text> */}
         </Flex>
 
-        <Flex direction="column" gap="3">
-          <Text fontSize="20px" fontWeight="600" fontFamily="sans-serif">
+        <Flex direction="column" gap="5" borderTop="1px solid gainsboro">
+          {/* <Text fontSize="20px" fontWeight="600" fontFamily="sans-serif">
             Payment Method Options
-          </Text>
+          </Text> */}
           <Flex
             direction={{
               base: "column",
@@ -150,16 +150,16 @@ function PaymentPage() {
               xl: "row",
               "2xl": "row",
             }}
-            borderTop="1px solid grey"
-            borderRight="1px solid grey"
-            borderLeft="1px solid grey"
-            borderRadius="1rem"
+            // borderTop="1px solid grey"
+            // border="1px solid gainsboro"
+            borderRight="1px solid gainsboro"
+            // borderRadius="0.5rem"
             justifyContent={"space-around"}
-            padding="5px"
+            padding="20px"
           >
             <Flex
               direction="column"
-              gap="0.5"
+              gap="1.5"
               border="0px solid blue"
               marginLeft="10px"
             >
@@ -168,11 +168,11 @@ function PaymentPage() {
                   cursor: "pointer",
                 }}
                 onClick={() => setMethod("Card")}
-                border="1px solid grey"
-                borderLeft={method === "Card" && "5px solid #689f38"}
+                // border="1px solid gainsboro"
+                border={method === "Card" ? "2px solid #689f38":"1px solid gainsboro"}
                 padding="2"
                 boxShadow="md"
-                borderRadius="10px"
+                borderRadius="6px"
                 width={{
                   lg: "298px",
                   "2xl": "298px",
@@ -205,11 +205,11 @@ function PaymentPage() {
                 }}
                 onClick={() => setMethod("Cod")}
                 gap="1"
-                border="1px solid grey"
-                borderLeft={method === "Cod" && "5px solid #689f38"}
+                // border="1px solid gainsboro"
+                border={method === "Cod" ? "2px solid #689f38":"1px solid gainsboro"}
                 padding="2"
                 boxShadow="md"
-                borderRadius="10px"
+                borderRadius="6px"
               >
                 <Box border="0px solid red">
                   <BsCashCoin size="25" />
@@ -237,11 +237,11 @@ function PaymentPage() {
                 }}
                 onClick={() => setMethod("Gift")}
                 gap="1"
-                border="1px solid grey"
-                borderLeft={method === "Gift" && "5px solid #689f38"}
+                // border="1px solid gainsboro"
+                border={method === "Gift" ? "2px solid #689f38":"1px solid gainsboro"}
                 padding="2"
                 boxShadow="md"
-                borderRadius="10px"
+                borderRadius="6px"
               >
                 <Box border="0px solid red">
                   <BsGift size="25" />
@@ -255,7 +255,7 @@ function PaymentPage() {
                   >
                     Gift card
                   </Heading>
-                  <Text color="grey">One card for all Apna Basket apps</Text>
+                  <Text color="grey">One card for all</Text>
                 </Flex>
                 {method === "Gift" && (
                   <Box border="0px solid red" margin="auto">
@@ -269,11 +269,11 @@ function PaymentPage() {
                 }}
                 onClick={() => setMethod("Paytm")}
                 gap="1"
-                border="1px solid grey"
-                borderLeft={method === "Paytm" && "5px solid #689f38"}
+                // border="1px solid gainsboro"
+                border={method === "Paytm" ? "2px solid #689f38":"1px solid gainsboro"}
                 padding="2"
                 boxShadow="md"
-                borderRadius="10px"
+                borderRadius="6px"
               >
                 <Box border="0px solid red">
                   <SiPaytm size="25" />
@@ -287,7 +287,7 @@ function PaymentPage() {
                   >
                     Paytm Wallet
                   </Heading>
-                  <Text color="grey">Link your Paytm wallet and pay</Text>
+                  <Text color="grey">Link Paytm wallet and pay</Text>
                 </Flex>
                 {method === "Paytm" && (
                   <Box border="0px solid red" margin="auto">
@@ -313,20 +313,23 @@ function PaymentPage() {
       </Flex>
       <Flex
         direction="column"
-        border="0px solid yellow"
+        borderTop="1px solid gainsboro"
         margin="auto"
-        marginTop="-8"
-        gap="10"
+        marginTop="83.5px"
+        marginLeft={"-3px"}
+        gap="15"
       >
         <Box>
           <Image
+          // padding={2}
             src="https://adn-static1.nykaa.com/media/wysiwyg/Payments/desktop-icons/payment-icon.svg"
             width=""
             height=""
             alt=""
+            margin={'auto'}
           />
         </Box>
-        <Box width={"80%"}>
+        <Box width={"100%"}padding={5}>
           <Accordion allowToggle>
             <AccordionItem>
               <h2>

@@ -161,8 +161,8 @@ const Address = () => {
         mt="3rem"
         mb={"3rem"}
         p={"2rem"}
-        border={"1px solid #e8e8e8"}
-        bg="#f6f6f6"
+        // border={"1px solid #e8e8e8"}
+        // bg="#ffffff"
         pb="5rem"
       >
         <Box>
@@ -378,8 +378,8 @@ const Address = () => {
                 />
               </Box>
             </Box>
-            <Box float={"left"} m={"1rem 0 1rem 0.25rem "}>
-              <Button variant={"outline"} onClick={handleSubmit}>
+            <Box float={"right"} m={"1rem 0.70rem 1rem 0.25rem "}>
+              <Button  bg={'#84c225'}  variant={"outline"} onClick={handleSubmit}>
                 Add Address
               </Button>
             </Box>
