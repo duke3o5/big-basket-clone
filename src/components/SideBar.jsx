@@ -50,26 +50,6 @@ export const SideBar = ({ category, setCategory, price, setPrice }) => {
           </div>
         </div>
         <label className="container">
-          <h1>Organic</h1>
-          <input
-            type="checkbox"
-            value="Organic"
-            onChange={filterFn}
-            checked={category.includes("Organic")}
-          />
-          <span className="checkmark"></span>
-        </label>
-        <label className="container">
-          <h1>Fresho</h1>
-          <input
-            type="checkbox"
-            value="Fresho"
-            onChange={filterFn}
-            checked={category.includes("Fresho")}
-          />
-          <span className="checkmark"></span>
-        </label>
-        <label className="container">
           <h1>USA</h1>
           <input
             type="checkbox"
@@ -86,6 +66,26 @@ export const SideBar = ({ category, setCategory, price, setPrice }) => {
             value="Hoovu Fresh"
             onChange={filterFn}
             checked={category.includes("Hoovu Fresh")}
+          />
+          <span className="checkmark"></span>
+        </label>
+        <label className="container">
+          <h1>Organic</h1>
+          <input
+            type="checkbox"
+            value="Organic"
+            onChange={filterFn}
+            checked={category.includes("Organic")}
+          />
+          <span className="checkmark"></span>
+        </label>
+        <label className="container">
+          <h1>Fresho</h1>
+          <input
+            type="checkbox"
+            value="Fresho"
+            onChange={filterFn}
+            checked={category.includes("Fresho")}
           />
           <span className="checkmark"></span>
         </label>
