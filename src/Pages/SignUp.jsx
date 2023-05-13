@@ -81,7 +81,7 @@ const SignUp = () => {
   };
 
   return (
-    <Box mx="auto" w={{ base: "80%", md: "50%" }}>
+    <Box mx="auto" w={{ base: "80%", md: "50%" }}my={"70px"}>
       <Heading as="h1" textAlign="center" my="8">
         Sign Up
       </Heading>
