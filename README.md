@@ -19,7 +19,7 @@ BigBasket is India's biggest e-grocer. It offers tens of thousands of different 
 3. Dibyendu (Home Page)
 <br/><br/>
 ## Frontend:
-https://apnabasket.vercel.app
+https://apnabasket-anubhav0391.vercel.app/
 <br/>
 ## Backend : 
 https://big-basket-api.onrender.com
