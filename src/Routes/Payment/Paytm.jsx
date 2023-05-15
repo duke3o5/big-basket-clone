@@ -21,9 +21,9 @@ const Paytm = () => {
     toast({
       description: "Payment Successfully",
       status: "success",
-      duration: 5000,
+      duration: 2000,
       isClosable: true,
-      position: "top-right",
+      position: "top",
     });
 
     setTimeout(() => {
