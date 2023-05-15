@@ -9,7 +9,8 @@ import {
   AccordionIcon,
   AccordionPanel,
   Image,
-  useToast
+  useToast,
+  Center
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
@@ -85,6 +86,7 @@ function PaymentPage() {
   }, [cart]);
 
   return (
+    <Center>
     <Flex
       
       direction={{
@@ -426,6 +428,7 @@ function PaymentPage() {
         </Box>
       </Flex>
     </Flex>
+    </Center>
   );
 }
 
