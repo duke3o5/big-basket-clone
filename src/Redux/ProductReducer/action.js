@@ -5,7 +5,7 @@ export const getProduct = (obj) => (dispatch) => {
     // console.log(credentials)
     dispatch({ type: PRODUCT_REQUEST })
 
-    axios.get('https://smiling-houndstooth-boa.cyclic.app/Products', obj)
+    axios.get('https://big-basket-api.onrender.com/Products', obj)
         .then((res) => {
             // console.log(res);
             dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data })
